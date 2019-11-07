@@ -336,9 +336,6 @@ namespace eval ::ngBot::plugin::mkvsize {
 			}
 
 			set data [binary format cu [expr {$firstByte & ~(1 << (7-$size))}]]
-
-			binary scan $data cu test
-
 			append data [read $fp $size]
 			set data "[string repeat \00 [expr {8-[string length $data]}]]$data"
 			binary scan $data W sizeSize
